@@ -34,7 +34,7 @@ jobs:
       run: docker compose -f docker-compose.yml -f test-compose.yml up -d
     - name: sleep so compose has some time to start the server
       run: sleep 10
-    # todo: actually run the selenium tests
+    - name: run selenium tests
+      run: pytest tests
     - name: shut server down cleanly
       run: docker compose down
-      
