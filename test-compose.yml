@@ -1,0 +1,11 @@
+services:
+  selenium:
+    image: selenium/standalone-chrome-debug:latest
+    container_name: selenium
+    ports:
+      - "4444:4444"
+      - "5900:5900"
+    volumes:
+      - "/dev/shm:/dev/shm"
+    networks:
+      - jupyterhub
