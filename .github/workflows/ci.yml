@@ -26,12 +26,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Run selenium tests
-    - run: pip install selenium pytest pytest-html pytest-selenium
-    - run: docker pull jupyter/scipy-notebook:latest
-    - run: docker compose up -d
-    # sleep so compose has some time to start the server
-    - run: sleep 10#
+    - name: install requirepemts with pip
+      run: pip install selenium pytest pytest-html pytest-selenium
+    - name: pull scipy image
+      run: docker pull jupyter/scipy-notebook:latest
+    - name: start server
+      run: docker compose up -d
+    - name: sleep so compose has some time to start the server
+      run: sleep 10
     # todo: actually run the selenium tests
-    - run: docker compose down
+    - name: shut server down cleanly
+      run: docker compose down
       
