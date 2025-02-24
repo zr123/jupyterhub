@@ -1,6 +1,7 @@
 services:
   jupyterhub:
     build: ./jupyterhub
+    pull_policy: build
     container_name: ${HUB_CONNECT_IP}
     ports: 
       - "8000:8000"
