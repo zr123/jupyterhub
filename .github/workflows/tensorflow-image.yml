@@ -1,0 +1,16 @@
+name: tensorflow-image
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-tensorflow-image:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build tensorflow-jupyterhub image
+      run: docker build -t tensorflow-jupyterhub ./tensorflow-jupyterhub

@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:tensorflow:2.14.0-gpu-jupyter
+FROM tensorflow/tensorflow:2.14.0-gpu-jupyter
 
 # install jupyterhub for compatability
 RUN pip3 install jupyterhub
