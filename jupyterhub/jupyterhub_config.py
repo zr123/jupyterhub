@@ -1,6 +1,6 @@
 import os
 
-# Auth
+# Auth - allow all linux system users
 c.Authenticator.allow_all = True
 
 # Basic Networking
