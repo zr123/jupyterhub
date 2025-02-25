@@ -15,7 +15,9 @@ c.DockerSpawner.allowed_images = {
 }
 c.DockerSpawner.network_name = os.environ['NETWORK_NAME']
 c.DockerSpawner.remove = True
-c.DockerSpawner.args = ["--gpus", "all"]
+c.DockerSpawner.extra_create_kwargs = {
+    "gpus": "all"
+}
 
 # directory volume bindings
 c.DockerSpawner.notebook_dir = '/home'
