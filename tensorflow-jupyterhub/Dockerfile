@@ -1,3 +1,5 @@
+# consult this list for cuda/tensorflow gpu compatability:
+# https://www.tensorflow.org/install/source
 FROM tensorflow/tensorflow:2.14.0-gpu-jupyter
 
 # install jupyterhub for compatability
