@@ -1,3 +1,4 @@
+import docker
 import os
 
 # Auth - allow all linux system users
@@ -15,9 +16,26 @@ c.DockerSpawner.allowed_images = {
 }
 c.DockerSpawner.network_name = os.environ['NETWORK_NAME']
 c.DockerSpawner.remove = True
-c.DockerSpawner.extra_create_kwargs = {
-    "gpus": "all"
+
+
+# Enable GPU support, see here for more info:
+# https://discourse.jupyter.org/t/swarmspawner-spawns-a-gpu-enabled-image-but/24115
+c.DockerSpawner.environment = {
+        'NVIDIA_DRIVER_CAPABILITIES': 'compute,utility',
+        'NVIDIA_VISIBLE_DEVICES': 'all',
+        'GRANT_SUDO': 'yes'
 }
+c.DockerSpawner.extra_host_config = {
+    "device_requests": [
+        docker.types.DeviceRequest(
+            count=-1,
+            capabilities=[["gpu"]],
+            driver="nvidia",
+            options={"--gpus": "all"}
+        ),
+    ],
+}
+
 
 # directory volume bindings
 c.DockerSpawner.notebook_dir = '/home'
